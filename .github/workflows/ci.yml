@@ -13,8 +13,8 @@ jobs:
       - name: Configurar JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: 'corretto'
+          java-version: '21'
 
       - name: Construir e testar
         run: mvn clean install
