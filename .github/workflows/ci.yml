@@ -28,14 +28,8 @@ jobs:
 
       - name: Construir a imagem Docker
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
-        env:
-          ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+          docker build -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest .
 
       - name: Enviar a imagem para o Amazon ECR
         run: |
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        env:
-          ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+          docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
