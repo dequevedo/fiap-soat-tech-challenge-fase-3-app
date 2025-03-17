@@ -1,6 +1,10 @@
 name: Java Build & Deploy
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -38,3 +42,26 @@ jobs:
         run: |
           docker push ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:${{ env.TIMESTAMP }}
           docker push ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest
+
+  deploy:
+    needs: build  # Só roda depois que o build finalizar
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # Só roda na branch main
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar Helm
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+      - name: Configurar acesso ao cluster
+        run: |
+          aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name ${{ vars.EKS_CLUSTER_NAME }}
+
+      - name: Atualizar imagem no Helm
+        run: |
+          helm upgrade --install fiap-tech-challenge ./infra \
+            --set app.image=${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:${{ env.TIMESTAMP }} \
+            --namespace fiap-tech
