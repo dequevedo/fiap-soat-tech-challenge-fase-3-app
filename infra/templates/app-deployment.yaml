@@ -14,23 +14,23 @@ spec:
       labels:
         app: {{ .Release.Name }}-app
     spec:
+      imagePullSecrets:
+          - name: ecr-secret
       containers:
-          - name: {{ .Release.Name }}-app
-            image: {{ .Values.app.image }}
-            imagePullPolicy: IfNotPresent
-            ports:
-              - containerPort: 8080
-            envFrom:
-              - configMapRef:
-                  name: {{ .Release.Name }}-app-config
-              - secretRef:
-                  name: {{ .Release.Name }}-app-secret
-            resources:
-              requests:
-                cpu: {{ .Values.app.resources.requests.cpu }}
-                memory: {{ .Values.app.resources.requests.memory }}
-              limits:
-                cpu: {{ .Values.app.resources.limits.cpu }}
-                memory: {{ .Values.app.resources.limits.memory }}
-            imagePullSecrets:
-              - name: ecr-secret
+        - name: {{ .Release.Name }}-app
+          image: "{{ .Values.app.image }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: "{{ .Release.Name }}-app-config"
+            - secretRef:
+                name: "{{ .Release.Name }}-app-secret"
+          resources:
+            requests:
+              cpu: "{{ .Values.app.resources.requests.cpu }}"
+              memory: "{{ .Values.app.resources.requests.memory }}"
+            limits:
+              cpu: "{{ .Values.app.resources.limits.cpu }}"
+              memory: "{{ .Values.app.resources.limits.memory }}"
