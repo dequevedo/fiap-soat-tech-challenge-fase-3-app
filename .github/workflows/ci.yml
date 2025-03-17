@@ -69,10 +69,10 @@ jobs:
 
       - name: Criar ou atualizar ECR Secret no Kubernetes
         run: |
-          aws ecr get-login-password --region ${{ vars.AWS_REGION }} | kubectl create secret docker-registry ecr-secret \
+          kubectl create secret docker-registry ecr-secret \
             --docker-server=${{ vars.ECR_REGISTRY }} \
             --docker-username=AWS \
-            --docker-password-stdin \
+            --docker-password="$(aws ecr get-login-password --region ${{ vars.AWS_REGION }})" \
             --namespace=default --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Atualizar imagem no Helm
