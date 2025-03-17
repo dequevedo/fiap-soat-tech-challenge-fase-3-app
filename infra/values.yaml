@@ -1,5 +1,5 @@
 app:
-  image: tech-challenge-fase-1
+  image: 139591140669.dkr.ecr.us-east-1.amazonaws.com/tech-challenge/fiap-soat-tech-challenge-fase-3-app:latest # TODO verificar se é seguro armazenar isso em repo publico
   replicas: 1
   resources:
     requests:
