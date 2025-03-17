@@ -77,5 +77,6 @@ jobs:
 
       - name: Atualizar imagem no Helm
         run: |
+          echo "Deploying image: ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest"
           helm upgrade --install fiap-tech-challenge ./infra \
-            --set app.image=${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:${{ env.TIMESTAMP }}
+            --set app.image=${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest
