@@ -36,6 +36,12 @@ docker build -t tech-challenge-fase-1 .
 helm install fiap-tech-challenge ./infra
 ```
 
+ou, caso deseje atualizar o aplicativo:
+
+```sh
+helm upgrade --install fiap-tech-challenge ./infra
+```
+
 ### 4. Testar o aplicativo
 
 ```sh
