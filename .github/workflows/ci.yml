@@ -44,9 +44,9 @@ jobs:
           docker push ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest
 
   deploy:
-    needs: build  # Só roda depois que o build finalizar
+    needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'  # Só roda na branch main
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout do código
