@@ -70,7 +70,7 @@ jobs:
 
       - name: Configurar acesso ao cluster
         run: |
-          aws eks update-kubeconfig --region ${{ vars.AWS_REGION }} --name ${{ env.EKS_CLUSTER_NAME }}
+          aws eks update-kubeconfig --region ${{ vars.AWS_REGION }} --name ${{ vars.EKS_CLUSTER_NAME }}
 
       - name: Criar ou atualizar ECR Secret no Kubernetes
         run: |
