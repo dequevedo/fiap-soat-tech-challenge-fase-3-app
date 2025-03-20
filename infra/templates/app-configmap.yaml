@@ -6,4 +6,4 @@ metadata:
     app: {{ .Release.Name }}-app
 
 data:
-  SPRING_DATASOURCE_URL: jdbc:postgresql://{{ .Values.secrets.app.TF_VAR_DB_ENDPOINT }}:5432/postgres
+  SPRING_DATASOURCE_ENDPOINT: jdbc:postgresql://$(SPRING_DATASOURCE_ENDPOINT):5432/postgres

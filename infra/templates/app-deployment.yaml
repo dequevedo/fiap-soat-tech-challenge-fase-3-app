@@ -22,11 +22,37 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
-          envFrom:
-            - configMapRef:
-                name: "{{ .Release.Name }}-app-config"
-            - secretRef:
-                name: "{{ .Release.Name }}-app-secret"
+          env:
+            - name: SPRING_DATASOURCE_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: rds-secret
+                  key: SPRING_DATASOURCE_ENDPOINT
+
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rds-secret
+                  key: SPRING_DATASOURCE_USERNAME
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rds-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+
+            - name: ACCESS_TOKEN_MERCADO_PAGO
+              valueFrom:
+                secretKeyRef:
+                  name: fiap-tech-challenge-app-secret
+                  key: ACCESS_TOKEN_MERCADO_PAGO
+
+            - name: NOTIFICATION_URL_NGROK
+              valueFrom:
+                secretKeyRef:
+                  name: fiap-tech-challenge-app-secret
+                  key: NOTIFICATION_URL_NGROK
+
           resources:
             requests:
               cpu: "{{ .Values.app.resources.requests.cpu }}"
