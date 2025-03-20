@@ -10,10 +10,6 @@ jobs:
   build:
     name: Building Application
     runs-on: ubuntu-latest
-
-    env:
-      EKS_CLUSTER_NAME: 'tech-challenge-cluster'  # Nome do seu cluster EKS
-
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
