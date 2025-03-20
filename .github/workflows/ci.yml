@@ -77,6 +77,14 @@ jobs:
             --docker-password="$(aws ecr get-login-password --region ${{ vars.AWS_REGION }})" \
             --namespace=default --dry-run=client -o yaml | kubectl apply -f -
 
+      - name: Criar Secrets do banco no Kubernetes
+        run: |
+          kubectl create secret generic rds-secret \
+            --from-literal=SPRING_DATASOURCE_USERNAME=${{ secrets.TF_VAR_DB_USERNAME }} \
+            --from-literal=SPRING_DATASOURCE_PASSWORD=${{ secrets.TF_VAR_DB_PASSWORD }} \
+            --from-literal=SPRING_DATASOURCE_ENDPOINT=${{ secrets.TF_VAR_DB_ENDPOINT }} \
+            --namespace=default --dry-run=client -o yaml | kubectl apply -f -
+
       - name: Atualizar imagem no Helm
         run: |
           echo "Deploying image: ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest"

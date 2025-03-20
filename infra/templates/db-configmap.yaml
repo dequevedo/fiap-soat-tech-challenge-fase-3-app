@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: db-configmap
-data:
-  POSTGRES_DB: postgres
-  POSTGRES_USER: {{ .Values.secrets.db.POSTGRES_USER | default "" }}
-  POSTGRES_PASSWORD: {{ .Values.secrets.db.POSTGRES_PASSWORD | default "" }}
