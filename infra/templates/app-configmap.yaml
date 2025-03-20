@@ -4,6 +4,3 @@ metadata:
   name: {{ .Release.Name }}-app-config
   labels:
     app: {{ .Release.Name }}-app
-
-data:
-  SPRING_DATASOURCE_URL: jdbc:postgresql://$(SPRING_DATASOURCE_URL):5432/postgres
