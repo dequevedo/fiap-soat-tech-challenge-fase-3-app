@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: debug-container
-      image: busybox:latest
+      image: postgres:latest
       command: ["sleep", "3600"]
   restartPolicy: Never
