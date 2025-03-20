@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: Building Application
     runs-on: ubuntu-latest
 
     steps:
@@ -44,6 +45,7 @@ jobs:
           docker push ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPOSITORY }}:latest
 
   deploy:
+    name: Deploying Application
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
