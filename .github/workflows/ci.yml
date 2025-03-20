@@ -82,7 +82,7 @@ jobs:
           kubectl create secret generic rds-secret \
             --from-literal=SPRING_DATASOURCE_USERNAME=${{ secrets.TF_VAR_DB_USERNAME }} \
             --from-literal=SPRING_DATASOURCE_PASSWORD=${{ secrets.TF_VAR_DB_PASSWORD }} \
-            --from-literal=SPRING_DATASOURCE_ENDPOINT=${{ secrets.TF_VAR_DB_ENDPOINT }} \
+            --from-literal=SPRING_DATASOURCE_URL=${{ secrets.TF_VAR_DB_ENDPOINT }} \
             --namespace=default --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Atualizar imagem no Helm
