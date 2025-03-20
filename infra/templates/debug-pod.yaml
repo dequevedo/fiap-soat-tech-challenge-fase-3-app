@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-net
+  labels:
+    app: debug
+spec:
+  containers:
+    - name: debug-container
+      image: busybox:latest
+      command: ["sleep", "3600"]
+  restartPolicy: Never
