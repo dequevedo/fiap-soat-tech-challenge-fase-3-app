@@ -1,12 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: debug-net
+  name: {{ .Release.Name }}-debug-net
   labels:
     app: debug
+    app.kubernetes.io/managed-by: "Helm"
+  annotations:
+    meta.helm.sh/release-name: "{{ .Release.Name }}"
+    meta.helm.sh/release-namespace: "{{ .Release.Namespace }}"
 spec:
   containers:
     - name: debug-container
-      image: postgres:latest
+      image: "{{ .Values.debug.image }}"
       command: ["sleep", "3600"]
   restartPolicy: Never
