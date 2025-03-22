@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/products")
 @RequiredArgsConstructor
 @Tag(name = "Products", description = "Operations related to Products")
 public class ProductControllerRest {
@@ -25,7 +25,7 @@ public class ProductControllerRest {
     private final GenericConverter genericConverter;
     private final ProductConverter productConverter;
 
-    @PostMapping("/products")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CreateProductResponse createProduct(@Valid @RequestBody CreateProductRequest productRequest) {
         Product productInput = productConverter.toDomain(productRequest);
@@ -35,14 +35,14 @@ public class ProductControllerRest {
         return genericConverter.toDto(newProduct, CreateProductResponse.class);
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public GetProductResponse getProductById(@PathVariable Long id) {
         Product product = productController.getProductById(id);
         return genericConverter.toDto(product, GetProductResponse.class);
     }
 
-    @GetMapping("/products")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<GetProductResponse> getAllProducts() {
         return productController.getAllProducts()

@@ -1,13 +1,10 @@
 package com.hexagonalarch.frameworks.rest.controllers;
 
-import com.hexagonalarch.adapters.controllers.OrderController;
 import com.hexagonalarch.adapters.controllers.PaymentController;
 import com.hexagonalarch.core.domain.OrderPayment;
 import com.hexagonalarch.core.domain.dto.PaymentNotificationDto;
 import com.hexagonalarch.core.domain.enumeration.PaymentStatus;
-import com.hexagonalarch.core.ports.usecases.Payment.PaymentWebhookUseCasePort;
 import com.hexagonalarch.frameworks.rest.dto.request.MercadoPagoWebhookRequest;
-import com.mercadopago.client.payment.PaymentAuthenticationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
