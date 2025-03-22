@@ -12,5 +12,6 @@ spec:
   containers:
     - name: debug-container
       image: "{{ .Values.debug.image }}"
-      command: ["sleep", "3600"]
+      command: ["/bin/sh"]
+      args: ["-c", "apt update && apt install -y curl && tail -f /dev/null"]
   restartPolicy: Never
