@@ -36,5 +36,6 @@ spring:
 management:
   endpoints:
     web:
+      base-path: /
       exposure:
-        include: "*"
+        include: health
