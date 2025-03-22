@@ -7,7 +7,6 @@ spec:
     app: {{ .Release.Name }}-app
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
-      nodePort: 30080  # Porta fixa no Node
-  type: NodePort
+      port: 8080       # Porta interna do serviço
+      targetPort: 8080 # Porta do pod onde o serviço está sendo executado
+  type: LoadBalancer   # Tipo alterado para LoadBalancer
