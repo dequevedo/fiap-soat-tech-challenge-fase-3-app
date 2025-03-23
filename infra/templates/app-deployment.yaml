@@ -61,16 +61,16 @@ spec:
               cpu: "{{ .Values.app.resources.limits.cpu }}"
               memory: "{{ .Values.app.resources.limits.memory }}"
 
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 5
-
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 10
+#            periodSeconds: 5
+#
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 5
+#            periodSeconds: 5
