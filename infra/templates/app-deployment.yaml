@@ -19,7 +19,7 @@ spec:
       containers:
         - name: {{ .Release.Name }}-app
           image: "{{ .Values.app.image }}"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
@@ -60,3 +60,17 @@ spec:
             limits:
               cpu: "{{ .Values.app.resources.limits.cpu }}"
               memory: "{{ .Values.app.resources.limits.memory }}"
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
