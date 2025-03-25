@@ -31,7 +31,7 @@ As imagens de contêiner da aplicação são armazenadas no Amazon ECR.
 ## Repositórios do Projeto
 
 ##### fiap-soat-tech-challenge-fase-3-infra-terraform:
-https://github.com/dequevedo/fiap-soat-tech-challenge-fase-3-infra-terraform
+https://github.com/RenatoMartinsXrd/fiap-soat-tech-challenge-fase-3-infra-terraform
 
 ##### fiap-soat-tech-challenge-fase-3-db-terraform:
 https://github.com/RenatoMartinsXrd/fiap-soat-tech-challenge-fase-3-db-terraform
