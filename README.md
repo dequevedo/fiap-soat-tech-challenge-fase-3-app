@@ -28,6 +28,9 @@ As imagens de contêiner da aplicação são armazenadas no Amazon ECR.
 
 ---
 
+## Arquitetura do Fluxo de autenticação e autorização
+![Lambda identify](https://github.com/user-attachments/assets/024aad9c-bcde-440d-8deb-1fcdb8cf0769)
+
 ## Repositórios do Projeto
 
 ##### fiap-soat-tech-challenge-fase-3-infra-terraform:
