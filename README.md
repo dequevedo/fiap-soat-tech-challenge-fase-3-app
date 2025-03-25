@@ -29,7 +29,7 @@ As imagens de contêiner da aplicação são armazenadas no Amazon ECR.
 ---
 
 ## Arquitetura do Fluxo de autenticação e autorização
-![Lambda identify](https://github.com/user-attachments/assets/024aad9c-bcde-440d-8deb-1fcdb8cf0769)
+![image](https://github.com/user-attachments/assets/0644d8b6-0f49-416f-b320-1e4b97008d70)
 
 ## Repositórios do Projeto
 
